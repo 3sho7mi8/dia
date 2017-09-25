@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ~/diary_conf
+. ~/.diary_conf
 
 KEY=$1
 
@@ -8,10 +8,14 @@ if [[ $DIARY_DIR = "" ]]; then
   DIARY_DIR=~/diary/
 fi
 
+if [[ $EDITOR = "" ]]; then
+  EDITOR=vim
+fi
+
 case $KEY in
-  "") vim $DIARY_DIR$(date "+%Y/%m/%d.md") ;;
-  "past") vim $DIARY_DIR$(date -v -$2 "+%Y/%m/%d.md") ;;
-  "future") vim $DIARY_DIR$(date -v +$2 "+%Y/%m/%d.md") ;;
+  "") $EDITOR $DIARY_DIR$(date "+%Y/%m/%d.md") ;;
+  "past") $EDITOR $DIARY_DIR$(date -v -$2 "+%Y/%m/%d.md") ;;
+  "future") $EDITOR $DIARY_DIR$(date -v +$2 "+%Y/%m/%d.md") ;;
   "commit")
     message=`date "+%Y-%m-%d"`
     cd $DIARY_DIR
@@ -25,9 +29,9 @@ case $KEY in
     git grep "$2" ;;
   "open")
     if [ $# -ge 3 ];then
-      vim $DIARY_DIR$2/$3/$4.md
+      $EDITOR $DIARY_DIR$2/$3/$4.md
     else
-      vim $DIARY_DIR$2.md
+      $EDITOR $DIARY_DIR$2.md
     fi ;;
 esac
 
