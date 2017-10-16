@@ -17,6 +17,13 @@ case $KEY in
   "past") $EDITOR $DIARY_DIR$(date -v -$2 "+%Y/%m/%d.md") ;;
   "future") $EDITOR $DIARY_DIR$(date -v +$2 "+%Y/%m/%d.md") ;;
   "todo") $EDITOR $DIARY_DIR$1.md ;;
+  "note")
+    if [ $2 == "list" ];then
+      cd $DIARY_DIR$1/
+      ls
+    else
+      $EDITOR $DIARY_DIR$1/$2.md
+    fi ;;
   "commit")
     message=`date "+%Y-%m-%d"`
     cd $DIARY_DIR
