@@ -41,7 +41,7 @@ case $KEY in
     else
       $EDITOR $DIARY_DIR$2.md
     fi ;;
-  "addtasks")
+  "asana")
     echo -e "## TODO by asana\n`asana tasks`" >> $DIARY_DIR$(date "+%Y/%m/%d.md")
 esac
 
