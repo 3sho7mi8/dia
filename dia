@@ -1,6 +1,9 @@
 #!/bin/bash
 
-. ~/.diary_conf
+# .dia_conf Sample:
+# readonly DIARY_DIR=~/GoogleDrive/Local_Space/ware_house/diary/
+# readonly EDITOR=vim
+[ -e ~/.dia_conf ] && . ~/.dia_conf
 
 KEY=$1
 
